@@ -1,4 +1,8 @@
+require_relative 'weather'
+
 class Airport
+
+	include Weather
 
 	DEFAULT_CAPACITY = 10
 

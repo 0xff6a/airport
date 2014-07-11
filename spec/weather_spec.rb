@@ -1,10 +1,8 @@
 require 'weather'
 
-class WeatherModuleHelper; include Weather; end
-
-describe Weather do
+shared_examples 'area with changing weather' do
 	
-	let(:area) {WeatherModuleHelper.new}
+	let(:area) {described_class.new}
 
 	it 'should be sunny initially' do
 		expect(area.weather_conditions).to be :sunny

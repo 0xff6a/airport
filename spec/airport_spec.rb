@@ -1,4 +1,5 @@
 require 'airport'
+require 'weather_spec'
 
 describe Airport do
 	
@@ -10,6 +11,7 @@ describe Airport do
 	def fill_airport
 		airport.capacity.times{ airport.request_landing(plane) }
 	end
+
 
 	context 'capacity:' do
 
@@ -63,7 +65,10 @@ describe Airport do
 	end
 
 	context 'weather conditions' do
-		
+
 	end
+
+	it_should_behave_like 'area with changing weather'
+
 
 end
