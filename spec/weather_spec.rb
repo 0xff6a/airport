@@ -2,7 +2,7 @@ require 'weather'
 
 shared_examples 'area with changing weather' do
 	
-	let(:area) {described_class.new}
+	let(:area) { described_class.new }
 
 	it 'should be sunny initially' do
 		expect(area.weather_conditions).to be :sunny

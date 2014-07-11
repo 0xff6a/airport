@@ -5,8 +5,8 @@ describe Airport do
 	
 	BIG_CAPACITY = 100
 
-	let(:airport) { Airport.new }
-	let(:plane) { double :plane }
+	let(:airport) 	{ Airport.new 																					}
+	let(:plane) 		{ double :plane, :land! => :plane, :take_off! => :planes}
 
 	before(:each) do
 		allow(airport).to receive(:check_weather_conditions).and_return(:sunny)
@@ -71,7 +71,7 @@ describe Airport do
 
 	context 'weather conditions' do
 		
-		it 'a plane cannot take off when there is a strom brewing' do
+		it 'a plane cannot take off when there is a storm brewing' do
 			airport.request_landing(plane)
 			allow(airport).to receive(:check_weather_conditions).and_return(:stormy)
 			airport.request_take_off(plane)

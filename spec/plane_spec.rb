@@ -2,9 +2,9 @@ require 'plane'
 
 describe Plane do
 
-	let(:plane) {Plane.new}
-	let(:landed_plane) {Plane.new.land!}
-	let(:flying_plane) {landed_plane.take_off!}
+	let(:plane) 				{ Plane.new							}
+	let(:landed_plane) 	{ Plane.new.land!				}
+	let(:flying_plane) 	{ landed_plane.take_off!}
 
 	it 'has a flying status when created' do
 		expect(plane).to be_flying
@@ -24,6 +24,10 @@ describe Plane do
 	
 	it 'has a flying status when in the air' do
 		expect(flying_plane.status).to eq :flying
+	end
+
+	it 'has a unique identifier' do
+		expect(plane.id).not_to eq landed_plane.id
 	end
 	
 end
