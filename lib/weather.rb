@@ -1,7 +1,7 @@
 module Weather
 
 	DEFAULT_WEATHER = :sunny
-	DEFAULT_STORM_PROBABILITY = 0.25
+	STORM_PROBABILITY = 0.25
 
 	def weather_conditions
 		@conditions ||= DEFAULT_WEATHER
@@ -12,7 +12,7 @@ module Weather
 	end
 		
 	def generate_random_conditions
-		return :stormy if Random::rand < DEFAULT_STORM_PROBABILITY
+		return :stormy if Random::rand < STORM_PROBABILITY
 		:sunny
 	end
 

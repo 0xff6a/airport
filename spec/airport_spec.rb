@@ -8,10 +8,11 @@ describe Airport do
 	let(:airport) { Airport.new }
 	let(:plane) { double :plane }
 
-	def fill_airport
-		airport.capacity.times{ airport.request_landing(plane) }
+	before(:each) do
+		allow(airport).to receive(:check_weather_conditions).and_return(:sunny)
 	end
 
+	it_should_behave_like 'area with changing weather'
 
 	context 'capacity:' do
 
@@ -60,15 +61,33 @@ describe Airport do
 			fill_airport
 			airport.request_landing(plane)
 			expect(airport.plane_count).to eq airport.capacity
-		end	
+		end
+
+		it 'should check if landing is possible' do
+			expect(airport.landing_possible?).to be true
+		end
 
 	end
 
 	context 'weather conditions' do
+		
+		it 'a plane cannot take off when there is a strom brewing' do
+			airport.request_landing(plane)
+			allow(airport).to receive(:check_weather_conditions).and_return(:stormy)
+			airport.request_take_off(plane)
+			expect(airport.landed_planes).to eq [plane]
+		end
+
+		it 'a plane cannot land in the middle of a storm' do
+			allow(airport).to receive(:check_weather_conditions).and_return(:stormy)
+			airport.request_landing(plane)
+			expect(airport).to be_empty
+		end
 
 	end
 
-	it_should_behave_like 'area with changing weather'
-
+	def fill_airport
+		airport.capacity.times{ airport.request_landing(plane) }
+	end
 
 end
