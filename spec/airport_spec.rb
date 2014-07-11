@@ -50,12 +50,20 @@ describe Airport do
 			expect(airport).to be_empty
 		end
 
+	end
+
+	context 'traffic control' do
+
 		it 'a plane cannot land if the airport is full' do
 			fill_airport
 			airport.request_landing(plane)
 			expect(airport.plane_count).to eq airport.capacity
 		end	
 
+	end
+
+	context 'weather conditions' do
+		
 	end
 
 end
