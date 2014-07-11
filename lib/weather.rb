@@ -1,7 +1,7 @@
 module Weather
 
 	DEFAULT_WEATHER = :sunny
-	STORM_PROBABILITY = 0.25
+	STORM_PROBABILITY = 0.35
 
 	def weather_conditions
 		@conditions ||= DEFAULT_WEATHER

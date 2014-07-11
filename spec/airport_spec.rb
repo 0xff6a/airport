@@ -43,11 +43,13 @@ describe Airport do
 	context 'taking off and landing:' do
 
 		it 'a plane can land' do
+			expect(plane).to receive(:land!)
 			airport.request_landing(plane)
 			expect(airport.landed_planes).to eq [plane]
 		end
 
 		it 'a plane can take off' do
+			expect(plane).to receive(:take_off!)
 			airport.request_landing(plane)
 			airport.request_take_off(plane)
 			expect(airport).to be_empty
