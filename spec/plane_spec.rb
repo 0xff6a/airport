@@ -2,9 +2,9 @@ require 'plane'
 
 describe Plane do
 
-	let(:plane) 				{ Plane.new							}
-	let(:landed_plane) 	{ Plane.new.land!				}
-	let(:flying_plane) 	{ landed_plane.take_off!}
+	let(:plane) 				{ Plane.new								}
+	let(:landed_plane) 	{ Plane.new.land!					}
+	let(:flying_plane) 	{ landed_plane.take_off!	}
 
 	it 'has a flying status when created' do
 		expect(plane).to be_flying
